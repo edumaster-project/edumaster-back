@@ -6,3 +6,5 @@ export type ApplicationError = {
 };
 
 export type SignInParams = Pick<User, "email" | "password">;
+
+export type SignUpParams = Pick<User, "name" | "email" | "password">;

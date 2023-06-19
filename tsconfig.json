@@ -1,16 +1,44 @@
+// {
+//   "compilerOptions": {
+//     "target": "es2020",
+//     "esModuleInterop": true,
+//     "module": "es6",
+//     "moduleResolution": "Node", // solve the problem with joi
+//     "outDir": "dist",
+//     "baseUrl": "src",
+//     "paths": {
+//       "@/*": ["*"]
+//     },
+//     "plugins": [
+//       {
+//         "transform": "typescript-transform-paths"
+//       }
+//     ]
+//   },
+//   "ts-node": {
+//     "esm": true
+//   }
+// }
+
 {
   "compilerOptions": {
     "target": "es2020",
-    "esModuleInterop": true,
-    "module": "es6",
-    "moduleResolution": "Node", // solve the problem with joi
+    "module": "commonjs",
     "outDir": "dist",
+    "noImplicitAny": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "rootDirs": ["src", "tests"],
     "baseUrl": "src",
     "paths": {
       "@/*": ["*"]
-    }
+    },
+    "plugins": [
+      {
+        "transform": "typescript-transform-paths"
+      }
+    ]
   },
-  "ts-node": {
-    "esm": true
-  }
+  "include": ["src", "tests"]
 }
