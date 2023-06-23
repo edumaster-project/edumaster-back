@@ -6,7 +6,7 @@ import { Router } from "express";
 const userRoutes = Router();
 
 userRoutes
-  .post("/signup", validateSchema(signUpSchema), signUp)
-  .post("/signin", validateSchema(signInSchema), signIn);
+  .post("/sign-up", validateSchema(signUpSchema), signUp)
+  .post("/sign-in", validateSchema(signInSchema), signIn);
 
 export { userRoutes };
