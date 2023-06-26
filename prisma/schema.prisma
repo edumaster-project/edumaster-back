@@ -31,11 +31,24 @@ model Session {
 }
 
 model Classes {
-  id        Int      @id @default(autoincrement())
+  id        Int       @id @default(autoincrement())
   userId    Int
-  User      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  name      String   @unique
+  User      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name      String    @unique
   quantity  Int
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  Student   Student[]
+}
+
+model Student {
+  id         Int      @id @default(autoincrement())
+  name       String   @db.VarChar(255)
+  birthDate  DateTime
+  fatherName String   @db.VarChar(255)
+  matherName String   @db.VarChar(255)
+  classId    Int
+  Classes    Classes  @relation(fields: [classId], references: [id], onDelete: Cascade)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 }

@@ -3,7 +3,12 @@ import { ClassParams } from "@/protocols/protocols";
 import classRepository from "@/repositories/class-repository";
 
 async function createClasses(userId: number, classData: ClassParams) {
-  const verifyDuplicatedName = await classRepository.findName(classData.name);
+  const verifyDuplicatedName = await classRepository.findName(
+    userId,
+    classData.name
+  );
+  console.log(verifyDuplicatedName);
+
   if (verifyDuplicatedName)
     throw conflictError("There is already a class with given name");
 
@@ -15,11 +20,9 @@ async function createClasses(userId: number, classData: ClassParams) {
 async function getAllClasses(userId: number) {
   const listClasses = await classRepository.findClasses(userId);
 
-  console.log(listClasses);
-
   return listClasses;
 }
 
-const classService = { createClasses,getAllClasses };
+const classService = { createClasses, getAllClasses };
 
 export default classService;

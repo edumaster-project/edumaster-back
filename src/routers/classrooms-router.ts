@@ -1,4 +1,4 @@
-import { createClasses, getClasses } from "@/controllers/classes-controller";
+import { createClasses, getClasses } from "@/controllers";
 import { authenticateToken, validateSchema } from "@/middlewares";
 import { classesSchema } from "@/schemas";
 import { Router } from "express";

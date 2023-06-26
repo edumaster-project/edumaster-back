@@ -23,10 +23,14 @@ export async function createClasses(
   next: NextFunction
 ) {
   const { userId } = req;
-  const { cardData } = req.body;
+  const userData = req.body;
 
+  const convertData = {
+    name: userData.name,
+    quantity: Number(userData.quantity),
+  };
   try {
-    const createdClass = await classService.createClasses(userId, cardData);
+    const createdClass = await classService.createClasses(userId, convertData);
 
     return res.status(httpStatus.OK).send(createdClass);
   } catch (error) {

@@ -2,7 +2,7 @@ import "reflect-metadata";
 import "express-async-errors";
 import express, { Express } from "express";
 import cors from "cors";
-import { classRoutes, userRoutes } from "@/routers";
+import { classRoutes, studentRoutes, userRoutes } from "@/routers";
 import { connectDb, disconnectDb, loadEnv } from "@/config";
 
 import { handleApplicationErrors } from "@/middlewares";
@@ -17,6 +17,7 @@ app
   .get("/health", (_req, res) => res.send("Hello world!"))
   .use("/users", userRoutes)
   .use("/classes", classRoutes)
+  .use('/students',studentRoutes)
   .use(handleApplicationErrors);
 
 export function init(): Promise<Express> {

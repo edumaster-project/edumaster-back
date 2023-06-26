@@ -10,9 +10,10 @@ async function create(userId: number, params: ClassParams) {
   });
 }
 
-async function findName(name: string) {
-  return prisma.classes.findUnique({
+async function findName(userId: number, name: string) {
+  return prisma.classes.findFirst({
     where: {
+      userId,
       name,
     },
   });
