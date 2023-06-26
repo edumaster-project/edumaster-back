@@ -1,12 +1,10 @@
-import 'reflect-metadata'
-import 'express-async-errors';
+import "reflect-metadata";
+import "express-async-errors";
 import express, { Express } from "express";
 import cors from "cors";
-// import { userRoutes } from './routers';
-import { userRoutes } from '@/routers';
-// import { connectDb,disconnectDb,loadEnv } from './config';
+import { classRoutes, userRoutes } from "@/routers";
 import { connectDb, disconnectDb, loadEnv } from "@/config";
-// import { handleApplicationErrors } from './middlewares'
+
 import { handleApplicationErrors } from "@/middlewares";
 
 const app = express();
@@ -18,6 +16,7 @@ app
   .use(express.json())
   .get("/health", (_req, res) => res.send("Hello world!"))
   .use("/users", userRoutes)
+  .use("/classes", classRoutes)
   .use(handleApplicationErrors);
 
 export function init(): Promise<Express> {

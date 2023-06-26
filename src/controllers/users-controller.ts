@@ -20,7 +20,6 @@ export async function signUp(req: Request, res: Response, next: NextFunction) {
 
   try {
     const user = await userService.createUser({ name, email, password });
-    console.log(user)
     return res.status(httpStatus.CREATED).json({
       id: user.id,
       email: user.email,

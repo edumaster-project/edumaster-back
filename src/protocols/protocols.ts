@@ -1,4 +1,4 @@
-import { User } from "@prisma/client";
+import { Classes, User } from "@prisma/client";
 
 export type ApplicationError = {
   name: string;
@@ -8,3 +8,5 @@ export type ApplicationError = {
 export type SignInParams = Pick<User, "email" | "password">;
 
 export type SignUpParams = Pick<User, "name" | "email" | "password">;
+
+export type ClassParams = Pick<Classes, "name" | "quantity">;

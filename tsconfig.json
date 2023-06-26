@@ -14,7 +14,7 @@
     },
     "plugins": [
       {
-        "transform": "transformer-module"
+        "transform": "typescript-transform-paths"
       }
     ]
   },

@@ -9,14 +9,14 @@ import jwt from "jsonwebtoken";
 async function signIn(params: SignInParams) {
   const { email, password } = params;
 
+  console.log(params)
   const user = await getUser(email);
 
-  const validatePassword = bcrypt.compare(password, user.password);
+  const validatePassword = await bcrypt.compare(password, user.password);
   if (!validatePassword) throw invalidCredentialsError();
 
   const token = await createSession(user.id);
 
-  console.log(token);
   return {
     user: exclude(user, "password"),
     token,
